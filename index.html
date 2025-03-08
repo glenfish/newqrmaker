@@ -275,6 +275,8 @@
         }
         function resetAndShowStart() {
           hideBlobImages();
+          document.getElementById("inputGifFile").value = "";
+          document.getElementById("gif-frames-container").innerHTML = "";
           document.getElementById("form-container").classList.remove("hide");
           document.getElementById("downloadGifButton").style.display = "none";
           document.getElementById("inputTextFile").classList.remove("hide");
@@ -337,7 +339,7 @@
         async function getInputArray() {
           const inputText = document.getElementById("inputText").value;
           const inputFile = document.getElementById("inputTextFile").files[0];
-
+          document.getElementById("inputTextFile").value = "";
           if (inputText) {
             return inputText.split(",").map((num) => num.trim());
           } else if (inputFile) {
@@ -470,7 +472,7 @@
             URL.revokeObjectURL(objectURL);
           }
 
-          setupServiceWorker();
+          // setupServiceWorker();
 
           checkOnline();
         });
